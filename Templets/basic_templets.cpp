@@ -33,3 +33,45 @@ Notes:
    ex: templete <typename T, typename U>
        void myfunc(T x , U y);
 */
+<<<<<<< HEAD
+
+#include <iostream>
+
+using namespace std;
+
+template <typename T>
+class Array {
+	T * ptr;
+	int size;
+public:
+	Array(T arr[], int s);
+	void print_arra();
+};
+
+template <typename T>
+Array<T>::Array(T arr[], int size) {
+	cout << "Constructor of Array called"<<endl;
+	this->ptr = new T[size];
+	for(int i = 0; i < size; i++)
+		this->ptr[i] = *(arr + i);
+	this->size = size;
+}
+
+template <typename T>
+void Array<T>::print_arra() {
+	for(int i = 0; i < this->size; i++)
+		cout << this->ptr[i] <<" ";
+	cout << endl;
+}
+
+int main() {
+	int arr[5] = {1,2,3,4,5};
+	Array<int> ary(arr,5);
+
+	cout << "Templets Basic"<<endl;
+	
+	ary.print_arra();
+	return 0;
+}
+=======
+>>>>>>> 7a5a4f4e7288fc38db214e5da832a9276fa1f0e5
