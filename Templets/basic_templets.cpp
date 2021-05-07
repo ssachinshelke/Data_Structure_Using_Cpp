@@ -33,7 +33,6 @@ Notes:
    ex: templete <typename T, typename U>
        void myfunc(T x , U y);
 */
-<<<<<<< HEAD
 
 #include <iostream>
 
@@ -73,5 +72,3 @@ int main() {
 	ary.print_arra();
 	return 0;
 }
-=======
->>>>>>> 7a5a4f4e7288fc38db214e5da832a9276fa1f0e5
