@@ -45,6 +45,12 @@ class Array {
 public:
 	Array(T arr[], int s);
 	void print_arra();
+         ~Array() {
+		cout << "Destructor of Array called"<<endl;
+		delete [] this->ptr;
+		this->size = 0;
+	}
+	void bubble_sort();
 };
 
 template <typename T>
@@ -56,6 +62,25 @@ Array<T>::Array(T arr[], int size) {
 	this->size = size;
 }
 
+/*
+	Generic bubble sort for all type of datatypes.
+	Bubble sort implemented using templates.
+*/
+template <typename T>
+void Array<T>::bubble_sort() {
+	int i, j;
+	T temp;
+	for(i = 0; i < this->size - 1; i++) {
+		for(j = 0; j < this->size - i - 1; j++) {
+			if(this->ptr[j] > this->ptr[j+1]) {
+				temp = this->ptr[j];
+				this->ptr[j] = this->ptr[j+1];
+				this->ptr[j+1] = temp;
+			}
+		}
+	}
+}
+
 template <typename T>
 void Array<T>::print_arra() {
 	for(int i = 0; i < this->size; i++)
@@ -64,11 +89,11 @@ void Array<T>::print_arra() {
 }
 
 int main() {
-	int arr[5] = {1,2,3,4,5};
-	Array<int> ary(arr,5);
+	int arr[6] = {1,2,7,4,5,6};
+	Array<int> ary(arr,6);
 
 	cout << "Templets Basic"<<endl;
-	
+        ary.bubble_sort();	
 	ary.print_arra();
 	return 0;
 }
