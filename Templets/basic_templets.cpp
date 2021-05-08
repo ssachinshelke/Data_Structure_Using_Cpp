@@ -50,7 +50,16 @@ public:
 		delete [] this->ptr;
 		this->size = 0;
 	}
+	T * getPtr() {
+		return this->ptr;
+	}
+
+	int getSize() {
+		return this->size;
+	}
+
 	void bubble_sort();
+	void bubble_sort_with_recursion(T *arr, int n);
 };
 
 template <typename T>
@@ -65,20 +74,52 @@ Array<T>::Array(T arr[], int size) {
 /*
 	Generic bubble sort for all type of datatypes.
 	Bubble sort implemented using templates.
+	Worst case and Avarege time complexity: O(n*n)
+	Best case time complexity: O(n)
+	Space complexity: O(1)
 */
 template <typename T>
 void Array<T>::bubble_sort() {
 	int i, j;
 	T temp;
+
+	bool swapped = false;
 	for(i = 0; i < this->size - 1; i++) {
+		swapped = false;
 		for(j = 0; j < this->size - i - 1; j++) {
 			if(this->ptr[j] > this->ptr[j+1]) {
 				temp = this->ptr[j];
 				this->ptr[j] = this->ptr[j+1];
 				this->ptr[j+1] = temp;
+				swapped = true;
 			}
 		}
+		if(swapped == false) {
+			break;       /* This is optimized bubble sort 
+					as we stopped when we see array sorted */
+		}
 	}
+}
+
+template <typename T>
+void Array<T>::bubble_sort_with_recursion(T *arr, int n) {
+	int i;
+	T temp;
+
+	if(n == 1) {
+		cout << "Array Sorted using recursive bubble sort" << endl;
+		return; 
+	}
+
+	for(i = 0; i < n - 1; i++) {
+		if(arr[i] > arr[i+1]) {
+			temp = arr[i];
+			arr[i] = arr[i+1];
+			arr[i+1] = temp;
+		}
+	}
+
+	bubble_sort_with_recursion(this->ptr, n-1);
 }
 
 template <typename T>
@@ -89,11 +130,16 @@ void Array<T>::print_arra() {
 }
 
 int main() {
-	int arr[6] = {1,2,7,4,5,6};
+	int arr[6] = {8,2,7,4,5,6};
 	Array<int> ary(arr,6);
 
-	cout << "Templets Basic"<<endl;
-        ary.bubble_sort();	
+	cout << "Templets Array"<<endl;
+
+	cout << "Unsorted Array"<<endl;
+	ary.print_arra();
+
+        ary.bubble_sort_with_recursion(ary.getPtr(), ary.getSize());	
+	cout << "Sorted Array"<<endl;
 	ary.print_arra();
 	return 0;
 }
