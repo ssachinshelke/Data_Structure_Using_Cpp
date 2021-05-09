@@ -51,7 +51,8 @@ int main() {
 
         //ary.bubble_sort_with_recursion(ary.getPtr(), ary.getSize());	
 	//ary.merge_sort(ary.getPtr(), 0, ary.getSize() - 1);
-        ary.selection_sort(ary.getPtr(), ary.getSize());	
+        //ary.selection_sort(ary.getPtr(), ary.getSize());	
+        ary.insertion_sort(ary.getPtr(), ary.getSize());	
 	cout << "Sorted Array"<<endl;
 	ary.print_arra();
 	return 0;
