@@ -46,12 +46,12 @@ int main() {
 	int arr[6] = {8,2,7,4,5,6};
 	Array<int> ary(arr,6);
 
-	cout << "Templets Array"<<endl;
-
 	cout << "Unsorted Array"<<endl;
 	ary.print_arra();
 
-        ary.bubble_sort_with_recursion(ary.getPtr(), ary.getSize());	
+        //ary.bubble_sort_with_recursion(ary.getPtr(), ary.getSize());	
+	//ary.merge_sort(ary.getPtr(), 0, ary.getSize() - 1);
+        ary.selection_sort(ary.getPtr(), ary.getSize());	
 	cout << "Sorted Array"<<endl;
 	ary.print_arra();
 	return 0;
