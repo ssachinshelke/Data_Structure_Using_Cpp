@@ -144,3 +144,23 @@ void Array<T>::insertion_sort(T * arr, int n) {
 		arr[j+1] = key;
 	}
 }
+
+/*
+	Shell sort is variation of insertion sort. 
+	Reffered  implementation from GeeksforGeeks:
+	https://www.geeksforgeeks.org/shellsort/
+*/
+template <typename T>
+void Array<T>::shell_sort(T *arr, int size) {
+
+	for(int gap = size/2; gap > 0; gap /= 2) {
+		for(int i = gap; i < size; i++) {
+			int tmp = arr[i];
+			int j;
+			for(j = i; j >= gap && arr[j - gap] > tmp; j -= gap) {
+				arr[j] = arr[j - gap];
+			}
+			arr[j] = tmp;
+		}
+	}
+}

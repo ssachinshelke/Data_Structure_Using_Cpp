@@ -22,8 +22,9 @@ public:
 	void bubble_sort();
 	void bubble_sort_with_recursion(T *arr, int n);
 	void merge_sort(T *arr, int l, int r);
-	void selection_sort(T *arr, int l);
-	void insertion_sort(T *arr, int l);
+	void selection_sort(T *arr, int n);
+	void insertion_sort(T *arr, int n);
+	void shell_sort(T *arr, int n);
 };
 
 template <typename T>
